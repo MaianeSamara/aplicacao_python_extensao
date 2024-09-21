@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Vacinação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 1200px;
+            margin: 10px;
+        }
+
+        h1 {
+            color: #2a9d8f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-buttons a,
+        .header-buttons button {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 5px;
+            text-align: center;
+        }
+
+        .header-buttons a:hover,
+        .header-buttons button:hover {
+            background-color: #1f7a6d;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #1f7a6d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2a9d8f;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #2a9d8f;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 0;
+            padding: 10px 0;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-buttons">
+            <a href="/register">Cadastrar Usuário</a>
+            <a href="/add_pet">Adicionar Vacinação</a>
+            <form method="POST" action="/list_pets" style="flex: 1; margin: 0;">
+                <label>Filtrar por nome:</label>
+                <input type="text" name="filtro">
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Espécie</th>
+                <th>Idade</th>
+                <th>Data de Vacinação</th>
+                <th>Local de Vacinação</th>
+            </tr>
+            {% for pet in pets %}
+            <tr>
+                <td>{{ pet[0] }}</td>
+                <td>{{ pet[1] }}</td>
+                <td>{{ pet[2] }}</td>
+                <td>{{ pet[3] }}</td>
+                <td>{{ pet[4] }}</td>
+                <td>{{ pet[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p><a href="/logout">Sair</a></p>
+    </div>
+</body>
+</html>
